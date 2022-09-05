@@ -17,6 +17,7 @@ use DAMA\DoctrineTestBundle\DAMADoctrineTestBundle;
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use Knp\Bundle\MenuBundle\KnpMenuBundle;
 use Sonata\AdminBundle\SonataAdminBundle;
+use Sonata\BlockBundle\Cache\HttpCacheHandler;
 use Sonata\BlockBundle\SonataBlockBundle;
 use Sonata\Doctrine\Bridge\Symfony\SonataDoctrineBundle;
 use Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle;
@@ -35,19 +36,10 @@ use Symfony\Component\Security\Http\Authentication\AuthenticatorManager;
 
 /**
  * @author Javier Spagnoletti <phansys@gmail.com>
- *
- * @psalm-suppress PropertyNotSetInConstructor
- *
- * @see https://github.com/psalm/psalm-plugin-symfony/pull/220
  */
 final class AppKernel extends Kernel
 {
     use MicroKernelTrait;
-
-    public function __construct()
-    {
-        parent::__construct('test', false);
-    }
 
     public function registerBundles(): iterable
     {
@@ -93,6 +85,9 @@ final class AppKernel extends Kernel
         $routes->import(__DIR__.'/Resources/config/routing/routes.yaml');
     }
 
+    /**
+     * @psalm-suppress DeprecatedClass
+     */
     protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
     {
         $loader->load(__DIR__.'/Resources/config/config.yaml');
@@ -101,6 +96,10 @@ final class AppKernel extends Kernel
             $loader->load(__DIR__.'/Resources/config/config_sf5.yaml');
         } else {
             $loader->load(__DIR__.'/Resources/config/config_sf4.yaml');
+        }
+
+        if (class_exists(HttpCacheHandler::class)) {
+            $loader->load(__DIR__.'/Resources/config/config_sonata_block_v4.yaml');
         }
 
         $container->setParameter('app.base_dir', $this->getBaseDir());

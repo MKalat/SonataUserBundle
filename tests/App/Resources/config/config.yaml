@@ -8,6 +8,7 @@ framework:
         enabled: true
     translator:
         enabled: true
+    http_method_override: false
 
 security:
     role_hierarchy: null
@@ -43,7 +44,7 @@ twig:
     exception_controller: null
     paths:
         - '%kernel.project_dir%/Resources/views'
-    strict_variables: '%kernel.debug%'
+    strict_variables: true
 
 doctrine:
     dbal:

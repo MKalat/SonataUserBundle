@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Sonata\UserBundle\Command;
 
 use Sonata\UserBundle\Model\UserManagerInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -23,8 +24,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 /**
  * @internal
  */
+#[AsCommand(name: 'sonata:user:create', description: 'Create a user')]
 final class CreateUserCommand extends Command
 {
+    // TODO: Remove static properties when support for Symfony < 5.4 is dropped.
     protected static $defaultName = 'sonata:user:create';
     protected static $defaultDescription = 'Create a user';
 
@@ -42,6 +45,7 @@ final class CreateUserCommand extends Command
         \assert(null !== static::$defaultDescription);
 
         $this
+            // TODO: Remove setDescription when support for Symfony < 5.4 is dropped.
             ->setDescription(static::$defaultDescription)
             ->setDefinition([
                 new InputArgument('username', InputArgument::REQUIRED, 'The username'),
@@ -52,19 +56,19 @@ final class CreateUserCommand extends Command
             ])
             ->setHelp(
                 <<<'EOT'
-The <info>%command.full_name%</info> command creates a user:
+                    The <info>%command.full_name%</info> command creates a user:
 
-  <info>php %command.full_name% matthieu matthieu@example.com mypassword</info>
+                      <info>php %command.full_name% matthieu matthieu@example.com mypassword</info>
 
-You can create a super admin via the super-admin flag:
+                    You can create a super admin via the super-admin flag:
 
-  <info>php %command.full_name% admin admi@example.com mypassword --super-admin</info>
+                      <info>php %command.full_name% admin admi@example.com mypassword --super-admin</info>
 
-You can create an inactive user (will not be able to log in):
+                    You can create an inactive user (will not be able to log in):
 
-  <info>php %command.full_name% user user@example.com mypassword --inactive</info>
+                      <info>php %command.full_name% user user@example.com mypassword --inactive</info>
 
-EOT
+                    EOT
             );
     }
 

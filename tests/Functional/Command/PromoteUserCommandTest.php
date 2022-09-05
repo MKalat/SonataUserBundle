@@ -15,7 +15,6 @@ namespace Sonata\UserBundle\Tests\Functional\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Sonata\UserBundle\Model\UserInterface;
-use Sonata\UserBundle\Tests\App\AppKernel;
 use Sonata\UserBundle\Tests\App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -111,14 +110,6 @@ class PromoteUserCommandTest extends KernelTestCase
 
         static::assertTrue($user->isSuperAdmin());
         static::assertStringContainsString('User "sonata-user-test" has been promoted as a super administrator.', $this->commandTester->getDisplay());
-    }
-
-    /**
-     * @return class-string<\Symfony\Component\HttpKernel\KernelInterface>
-     */
-    protected static function getKernelClass(): string
-    {
-        return AppKernel::class;
     }
 
     /**

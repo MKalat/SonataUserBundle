@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Sonata\UserBundle\Tests\Functional\Action;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Sonata\UserBundle\Tests\App\AppKernel;
 use Sonata\UserBundle\Tests\App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
@@ -56,8 +55,7 @@ final class RequestActionTest extends WebTestCase
         static::assertRouteSame('sonata_user_admin_resetting_check_email');
     }
 
-    /** @test */
-    public function itSubmitsResetPasswordRequest(): void
+    public function testItSubmitsResetPasswordRequest(): void
     {
         $client = static::createClient();
 
@@ -86,14 +84,6 @@ final class RequestActionTest extends WebTestCase
 
         static::assertResponseIsSuccessful();
         static::assertRouteSame('sonata_user_admin_resetting_check_email');
-    }
-
-    /**
-     * @return class-string<\Symfony\Component\HttpKernel\KernelInterface>
-     */
-    protected static function getKernelClass(): string
-    {
-        return AppKernel::class;
     }
 
     /**

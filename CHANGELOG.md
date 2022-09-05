@@ -2,6 +2,38 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [5.3.3](https://github.com/sonata-project/SonataUserBundle/compare/5.3.2...5.3.3) - 2022-08-13
+### Added
+- [[#1560](https://github.com/sonata-project/SonataUserBundle/pull/1560)] Add support for `sonata-project/doctrine-extensions` ^2.0. ([@jordisala1991](https://github.com/jordisala1991))
+- [[#1560](https://github.com/sonata-project/SonataUserBundle/pull/1560)] Add support for `sonata-project/twig-extensions` ^2.0. ([@jordisala1991](https://github.com/jordisala1991))
+
+### Fixed
+- [[#1562](https://github.com/sonata-project/SonataUserBundle/pull/1562)] Add UniqueEntity constraint to email field in order to prevent UniqueConstraintViolationException exception. ([@m-ar-c](https://github.com/m-ar-c))
+
+## [5.3.2](https://github.com/sonata-project/SonataUserBundle/compare/5.3.1...5.3.2) - 2022-07-27
+### Fixed
+- [[#1556](https://github.com/sonata-project/SonataUserBundle/pull/1556)] `User::getUsername` return the real value in database (and can return null). ([@VincentLanglet](https://github.com/VincentLanglet))
+
+## [5.3.1](https://github.com/sonata-project/SonataUserBundle/compare/5.3.0...5.3.1) - 2022-07-20
+### Fixed
+- [[#1553](https://github.com/sonata-project/SonataUserBundle/pull/1553)] Fix user edit page to check for a form attribute before rendering the role matrix. ([@wluijt-endertech](https://github.com/wluijt-endertech))
+
+## [5.3.0](https://github.com/sonata-project/SonataUserBundle/compare/5.2.0...5.3.0) - 2022-07-12
+### Added
+- [[#1540](https://github.com/sonata-project/SonataUserBundle/pull/1540)] Added `RoleMatrixType:exclude` Option to hide choices. ([@Hanmac](https://github.com/Hanmac))
+
+## [5.2.0](https://github.com/sonata-project/SonataUserBundle/compare/5.1.0...5.2.0) - 2022-06-25
+### Added
+- [[#1543](https://github.com/sonata-project/SonataUserBundle/pull/1543)] Add compatibility with `doctrine/persistence` ^3.0. ([@jordisala1991](https://github.com/jordisala1991))
+
+### Removed
+- [[#1543](https://github.com/sonata-project/SonataUserBundle/pull/1543)] Avoid deprecations with lazy commands on Symfony 6.1. ([@jordisala1991](https://github.com/jordisala1991))
+- [[#1541](https://github.com/sonata-project/SonataUserBundle/pull/1541)] Support of Symfony 5.3 ([@franmomu](https://github.com/franmomu))
+
+## [5.1.0](https://github.com/sonata-project/SonataUserBundle/compare/5.0.0...5.1.0) - 2022-04-29
+### Changed
+- [[#1533](https://github.com/sonata-project/SonataUserBundle/pull/1533)] Changed UserAdmin classnameLabel. This affects the breadcrumb translation generation. With this change Sonata will always pick the SonataUserBundle breadcrumbs translations by default. ([@aerrasti](https://github.com/aerrasti))
+
 ## [5.0.0](https://github.com/sonata-project/SonataUserBundle/compare/5.0.0-rc.1...5.0.0) - 2022-03-13
 ### Fixed
 - [[#1517](https://github.com/sonata-project/SonataUserBundle/pull/1517)] Added validation translation to fix untranslated content. ([@jordisala1991](https://github.com/jordisala1991))

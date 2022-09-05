@@ -15,7 +15,6 @@ namespace Sonata\UserBundle\Tests\Functional\Command;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Sonata\UserBundle\Model\UserInterface;
-use Sonata\UserBundle\Tests\App\AppKernel;
 use Sonata\UserBundle\Tests\App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -59,14 +58,6 @@ class ChangePasswordCommandTest extends KernelTestCase
 
         static::assertSame($user->getPassword(), 'new_password');
         static::assertStringContainsString('Changed password for user "sonata-user-test".', $this->commandTester->getDisplay());
-    }
-
-    /**
-     * @return class-string<\Symfony\Component\HttpKernel\KernelInterface>
-     */
-    protected static function getKernelClass(): string
-    {
-        return AppKernel::class;
     }
 
     /**
